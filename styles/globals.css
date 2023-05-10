@@ -1,12 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap");
 
 ul > li {
-    @apply bg-gray-800 px-3 py-2 rounded-xl text-gray-200 transition-all
+  @apply bg-gray-800 px-3 py-2 rounded-xl text-gray-200 transition-all;
 }
 
-ul > li:hover{
-    @apply bg-gray-500 cursor-pointer -translate-y-1
+ul > li:hover {
+  @apply bg-gray-500 cursor-pointer -translate-y-1;
+}
+
+.card {
+  @apply border border-gray-700 cursor-pointer w-52 h-auto flex flex-col items-center justify-between shadow-emerald-500 shadow-md transition-all;
+}
+
+.card:hover {
+  @apply -translate-y-2 shadow-lg shadow-emerald-400;
 }
