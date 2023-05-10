@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'oswald': ['Oswald', 'sans-serif'],
+        oswald: ["Oswald", "sans-serif"],
       },
     },
   },
