@@ -1,8 +1,11 @@
-export default function Home() {
+import Layout from "@/components/Layout";
+
+export default function HomePage() {
   return (
-    <div className="w-full h-screen flex flex-col gap-2 justify-center items-center bg-black text-white text-xl">
-      <h1 className="text-5xl font-oswald">CYBER ZONE</h1>
-      <h2 className="text-2xl font-oswald">Coming Soon...</h2>
-    </div>
+    <Layout>
+      <div className="flex items-center justify-center h-96">
+        <h1 className="text-gray-300 text-5xl font-owsald">PROXIMAMENTE</h1>
+      </div>
+    </Layout>
   );
 }
