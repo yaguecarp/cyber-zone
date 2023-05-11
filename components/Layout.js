@@ -38,7 +38,7 @@ export default function Layout({ children }) {
           <div className="mt-5 flex flex-col items-center justify-center p-2">
             <div className="bg-gray-600 w-full h-96 text-gray-200 text-center">
               {" "}
-              Escribe una pregunta para comenzar
+              Escribe una pregunta para comenzar...
             </div>
             <div className="w-full p-2">
               <input
