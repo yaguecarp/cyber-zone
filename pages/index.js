@@ -21,7 +21,7 @@ export default function HomePage() {
         <div className="flex flex-wrap gap-5 p-5 justify-center items-center mt-2 text-gray-300">
           {games.map((game) => (
             // <h1>{game.name}</h1>
-            <GameCard titulo={game.name} imagen={game.background_image} />
+            <GameCard key={game.name} titulo={game.name} imagen={game.background_image} />
           ))}
         </div>
       </div>
