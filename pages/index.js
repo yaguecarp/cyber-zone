@@ -16,7 +16,7 @@ export default function HomePage() {
 
   return (
     <Layout>
-      <h1 className="text-2xl text-gray-300 font-owsald ml-3 mt-3">Nuevos lanzamientos y trendings</h1>
+      <h1 className="text-2xl text-gray-300 font-audiowide ml-3 mt-3">Nuevos lanzamientos y trendings</h1>
       <div className="flex items-center justify-center h-auto">
         <div className="flex flex-wrap gap-5 p-5 justify-center items-center mt-2 text-gray-300">
           {games.map((game) => (

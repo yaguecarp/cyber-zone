@@ -10,7 +10,11 @@ module.exports = {
     extend: {
       fontFamily: {
         oswald: ["Oswald", "sans-serif"],
+        audiowide: ["Bruno Ace SC", "cursive"]
       },
+      colors: {
+        primary: '#00E6FF'
+      }
     },
   },
   plugins: [],
