@@ -1,25 +1,20 @@
+import Nav from "./Nav";
+
 export default function Layout({ children }) {
   return (
-    <main className="bg-gray-900 min-h-screen border">
-      <div className="min-h-screen flex justify-between ">
-        {/* NAV */}
-        <aside className=" h-full w-72 p-1 fixed top-0 left-0 bg-gray-900 ">
-          <h1 className="cursor-pointer select-none text-3xl font-oswald text-teal-500 bg-gray-800 text-center rounded-xl  font-bold py-4 m-4">
-            CYBER ZONE
-          </h1>
-          <nav>
-            <ul className="flex flex-col items-start ml-5 mt-10 text-xl font-oswald gap-10">
-              <li>Inicio</li>
-              <li>Analisis</li>
-              <li>Nuevos Lanzamientos</li>
-              <li>TOP</li>
-              <li>Todos los juegos</li>
-              <li>Plataformas</li>
-              <li>Generos</li>
-            </ul>
-          </nav>
-        </aside>
-        {/* FIN NAV */}
+    <main className="bg-gray-900 min-h-screen flex">
+      <Nav />
+
+      <div className="text-white ml-80  w-full p-4 m-2 flex flex-col">
+        <input
+          type="text"
+          placeholder="PULSA AQUI PARA BUSCAR 🔍"
+          className="font-audiowide bg-gray-800 p-3 rounded-lg border border-primary shadow-sm shadow-gray-400  "
+        />
+        <div className="mt-5">{children}</div>
+      </div>
+      {/* <div className="min-h-screen flex justify-between">
+        <Nav show={false}/>
 
         <section className="border border-gray-700 ml-72 w-3/5">
           <div className="w-full border-b border-gray-500 h-24 flex  items-center ">
@@ -52,7 +47,7 @@ export default function Layout({ children }) {
             </div>
           </div>
         </aside>
-      </div>
+      </div> */}
     </main>
   );
 }
