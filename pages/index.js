@@ -1,5 +1,6 @@
 import GameCard from "@/components/GameCard";
 import Layout from "@/components/Layout";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
@@ -15,16 +16,25 @@ export default function HomePage() {
   console.log(games);
 
   return (
-    <Layout>
-      <h1 className="text-2xl text-gray-300 font-audiowide ml-3 mt-3">Nuevos lanzamientos y trendings</h1>
+    <>
+      {" "}
+      <h1 className="text-2xl text-gray-300 font-audiowide ml-3 mt-3">
+        Nuevos lanzamientos y trendings
+      </h1>
       <div className="flex items-center justify-center h-auto">
         <div className="flex flex-wrap gap-5 p-5 justify-center items-center mt-2 text-gray-300">
           {games.map((game) => (
             // <h1>{game.name}</h1>
-            <GameCard key={game.name} titulo={game.name} imagen={game.background_image} />
+            <Link href={`/games/${game.slug}`}>
+              <GameCard
+                key={game.id}
+                titulo={game.name}
+                imagen={game.background_image}
+              />
+            </Link>
           ))}
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
