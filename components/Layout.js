@@ -26,7 +26,7 @@ export default function Layout({ children }) {
           <div className="bg-gray-900 mt-5 w-full h-80 flex justify-around gap-3 p-2">
             <img src="./bot.png" className="w-10 h-10" alt="" />
             <p className="text-gray-400 font-oswald">
-              Hola! Mi nombre es CyberBot, y puedo ayudarte con dudas puntuales
+              Hola! Mi nombre es CyberBot y puedo ayudarte con dudas puntuales
               que tengas de tus juegos favoritos! <br /> Decime, en que puedo
               ayudar?
             </p>
