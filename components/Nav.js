@@ -1,15 +1,19 @@
+import Link from "next/link";
+
+
 export default function Nav({ show }) {
-  console.log(show);
   return (
     <aside
       className={
         "left-0 top-0 text-gray-500 fixed w-1/6  bg-gray-900 h-full border-r border-primary "
       }
     >
-      <div className="w-auto h-auto m-auto flex flex-col justify-center items-center ">
-        <img src="./logo_sin_fondo.png" alt="" className="w-24 h-24" />
-        <h1 className="main-title">CYBERZONE</h1>
-      </div>
+      <Link href={"/"}>
+        <div className="w-auto h-auto m-auto flex flex-col justify-center items-center ">
+          <img src='./logo_sin_fondo.png' alt="logo" className="w-24 h-24" />
+          <h1 className="main-title">CYBERZONE</h1>
+        </div>
+      </Link>
 
       <nav className=" mt-10 p-2">
         <ul className="flex flex-col items-center text-xl font-audiowide gap-7">
