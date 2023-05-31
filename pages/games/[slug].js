@@ -24,7 +24,7 @@ export default function GamePage({ data }) {
                 Plataformas:{" "}
               </h2>
               {data.parent_platforms.map((plataforma) => (
-                <h3 className="text-white ml-2 text-xl">
+                <h3 className="text-white ml-2 text-xl" key={plataforma.platform.name}>
                   {plataforma.platform.name}
                 </h3>
               ))}
@@ -35,6 +35,7 @@ export default function GamePage({ data }) {
               </h2>
               {[...Array(5)].map((e, i) => (
                 <svg
+                key={i}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
