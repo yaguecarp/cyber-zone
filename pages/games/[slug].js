@@ -8,18 +8,18 @@ export default function GamePage({ data }) {
   return (
     <>
       <div className=" border border-gray-600 shadow-md shadow-primary  p-4 flex flex-col font-audiowide">
-        <div className="flex md:flex-row xs:flex-col">
-          <div className=" p-2 w-full md:w-1/3">
+        <div className="flex md:flex-row xs:flex-col h-96 xs:h-auto">
+          <div className=" p-2 w-full md:w-1/2 h-auto">
             <img
               src={data.background_image}
-              className=" border-gray-700 w-full h-auto mb-5 shadow-md shadow-cyan-700 "
+              className=" border-gray-700 w-full h-full object-cover mb-5 shadow-md shadow-cyan-700 "
               alt=""
             />
           </div>
-          <div className=" flex flex-col justify-start flex-1 gap-10">
+          <div className=" flex flex-col justify-start flex-1 gap-10 ">
             <h1 className="text-center text-4xl">{data.name}</h1>
 
-            <div className="flex justify-start items-center ml-5 mt-10 xs:flex-col xs:gap-5">
+            <div className="flex flex-wrap justify-start items-center ml-5 mt-10 md:flex-row md:gap-1 xs:flex-col xs:gap-5">
               <h2 className="border-b border-primary text-2xl">
                 Plataformas:{" "}
               </h2>
