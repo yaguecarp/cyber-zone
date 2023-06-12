@@ -1,9 +1,9 @@
 export default function InfoPage() {
   return (
-    <div className="border border-gray-600 shadow-md shadow-primary p-4 w-full h-screen flex flex-col font-audiowide">
+    <div className="border border-gray-600 shadow-md shadow-primary p-4 w-full h-auto flex flex-col font-audiowide">
       <h1 className="main-title text-center">Como calculamos los precios?</h1>
-      <div className="flex justify-between gap-10 items-start mt-5">
-        <p className="  w-2/3 mt-5 text-justify font-oswald text-2xl font-thin">
+      <div className="flex justify-between gap-10 items-start mt-5 xs:flex-col">
+        <p className="  w-2/3 xs:w-full mt-5 text-justify font-oswald text-2xl font-thin">
           Las plataformas digitales en Argentina nos muestran los precios sin
           los impuestos aplicados, lo que puede llevar a que nos llevemos una
           sorpresa a la hora de ver el resumen de nuestra tarjeta. Para evitar
@@ -21,7 +21,7 @@ export default function InfoPage() {
           con el precio del dolar, y asi hacer un calculo aproximado. A
           continuacion tendras la cotizacion del dolar al dia de hoy.
         </p>
-        <div className="  w-1/3 h-auto ">
+        <div className="  w-1/3 xs:w-full h-auto ">
           <div className=" bg-gray-800  p-4 shadow-md shadow-gray-600 border border-cyan-900">
             <h2 className="text-center text-lg ">
               IMPUESTOS APLICADOS EN PLATAFORMAS DIGITALES

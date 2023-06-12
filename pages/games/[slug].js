@@ -7,23 +7,23 @@ export default function GamePage({ data }) {
 
   return (
     <>
-      <div className="border border-gray-600 shadow-md shadow-primary p-4 w-full h-auto flex flex-col font-audiowide">
-        <div className="flex">
-          <div className=" p-2 ">
+      <div className=" border border-gray-600 shadow-md shadow-primary  p-4 flex flex-col font-audiowide">
+        <div className="flex xs:flex-col">
+          <div className=" p-2 w-full">
             <img
               src={data.background_image}
-              className=" border-gray-700 shadow-md shadow-cyan-700 "
+              className=" border-gray-700 w-full h-auto mb-5 shadow-md shadow-cyan-700 "
               alt=""
             />
           </div>
-          <div className="flex flex-col justify-start flex-1 gap-10">
+          <div className=" flex flex-col justify-start flex-1 gap-10">
             <h1 className="text-center text-4xl">{data.name}</h1>
 
-            <div className="flex justify-start items-center ml-5 mt-10">
+            <div className="flex justify-start items-center ml-5 mt-10 xs:flex-col xs:gap-5">
               <h2 className="border-b border-primary text-2xl">
                 Plataformas:{" "}
               </h2>
-              {data.parent_platforms.map((plataforma) => (
+              {data.parent_platforms?.map((plataforma) => (
                 <h3 className="text-white ml-2 text-xl" key={plataforma.platform.name}>
                   {plataforma.platform.name}
                 </h3>
@@ -55,17 +55,17 @@ export default function GamePage({ data }) {
             </div>
           </div>
         </div>
-        <div>
+        <div className="xs:mt-5">
           <div className="flex p-2 items-baseline">
             <h2 className="text-lg text-cyan-700">Etiquetas:</h2>
             <h3 className="ml-2 text-sm">
-              {data.tags.map((tag) => `${tag.name}, `)}
+              {data.tags?.map((tag) => `${tag.name}, `)}
             </h3>
           </div>
           <div className="flex p-2 items-baseline">
             <h2 className="text-lg text-cyan-700">Desarrollador:</h2>
             <h3 className="ml-2 text-sm">
-              {data.publishers.map((p) => `${p.name}`)}
+              {data.publishers?.map((p) => `${p.name}`)}
             </h3>
           </div>
           <div className="flex p-2 items-baseline">
@@ -79,7 +79,7 @@ export default function GamePage({ data }) {
               Disponible para comprar en:{" "}
             </h2>
             <div className="flex flex-col">
-              {data.stores.map((store) => (
+              {data.stores?.map((store) => (
                 <a
                   key={store.store.name}
                   href={"https://" + store.store.domain}
@@ -90,7 +90,7 @@ export default function GamePage({ data }) {
               ))}
             </div>
           </div>
-          <div className="border w-1/2 h-auto p-5">
+          {/* <div className="border w-1/2 h-auto p-5">
             <div className="flex justify-between items-center">
                 <span className="text-gray-400">Precio base</span>
                 <span className="text-gray-400">$765,24</span>
@@ -108,7 +108,7 @@ export default function GamePage({ data }) {
                 <span className="text-gray-200">TOTAL APROXIMADO CON IMPUESTOS</span>
                 <span className="text-gray-200">$1.338,75</span>
             </div>
-          </div>
+          </div> */}
         </div>
         <Link
           href="../precios-argentina"
