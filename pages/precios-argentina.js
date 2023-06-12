@@ -2,7 +2,7 @@ export default function InfoPage() {
   return (
     <div className="border border-gray-600 shadow-md shadow-primary p-4 w-full h-auto flex flex-col font-audiowide">
       <h1 className="main-title text-center">Como calculamos los precios?</h1>
-      <div className="flex justify-between gap-10 items-start mt-5 xs:flex-col">
+      <div className="flex justify-between gap-10 items-start mt-5 md:flex-row xs:flex-col">
         <p className="  w-2/3 xs:w-full mt-5 text-justify font-oswald text-2xl font-thin">
           Las plataformas digitales en Argentina nos muestran los precios sin
           los impuestos aplicados, lo que puede llevar a que nos llevemos una

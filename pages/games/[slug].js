@@ -8,8 +8,8 @@ export default function GamePage({ data }) {
   return (
     <>
       <div className=" border border-gray-600 shadow-md shadow-primary  p-4 flex flex-col font-audiowide">
-        <div className="flex xs:flex-col">
-          <div className=" p-2 w-full">
+        <div className="flex md:flex-row xs:flex-col">
+          <div className=" p-2 w-full md:w-1/3">
             <img
               src={data.background_image}
               className=" border-gray-700 w-full h-auto mb-5 shadow-md shadow-cyan-700 "
