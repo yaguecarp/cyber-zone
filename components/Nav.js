@@ -13,11 +13,11 @@ export default function Nav({ show, setShow }) {
         }
       >
         <Link href={"/"}>
-          <div onClick={()=>setShow(!show)} className="w-auto xs:mt-10 m-auto flex flex-col justify-center items-center ">
+          <div onClick={()=>setShow(!show)} className="w-auto md:m-0 xs:mt-10 m-auto flex flex-col justify-center items-center ">
             <img
               src="./logo_sin_fondo.png"
               alt="logo"
-              className="w-24 h-auto xs:hidden"
+              className="w-24 h-auto xs:hidden md:block"
             />
             <h1 className="main-title">CYBERZONE</h1>
           </div>
