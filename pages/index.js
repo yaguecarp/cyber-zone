@@ -11,7 +11,9 @@ export default function HomePage() {
   useEffect(() => {
     fetch(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
       .then((res) => res.json())
-      .then((data) => setGames(data.results));
+      .then((data) => {
+        setGames(data.results);
+      });
   }, []);
   console.log(games);
 
