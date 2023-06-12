@@ -30,17 +30,53 @@ export default function Layout({ children }) {
   };
 
   const filtrar = (terminoBusqueda) => {
-    var resultadoBusqueda = games.filter((game) => {
+    let resultadoBusqueda = games.filter((game) => {
       if (
         game.name
           .toString()
           .toLowerCase()
-          .includes(terminoBusqueda.toLowerCase())
+          .startsWith(terminoBusqueda.toLowerCase())
       ) {
         return game;
       }
     });
-    setGamesFilter(resultadoBusqueda.slice(0,4));
+
+    if (resultadoBusqueda.length == 0) {
+      resultadoBusqueda = games.filter((game) => {
+        if (
+          game.name
+            .toString()
+            .toLowerCase()
+            .includes(terminoBusqueda.toLowerCase())
+        ) {
+          return game;
+        }
+      });
+      let sortedGames = resultadoBusqueda
+        .slice(0, 4)
+        .sort((g1, g2) => (g1.slug > g2.slug ? 1 : g1.slug < g2.slug ? -1 : 0));
+      setGamesFilter(sortedGames);
+    }
+    let sortedGames = resultadoBusqueda
+      .slice(0, 4)
+      .sort((g1, g2) => (g1.slug > g2.slug ? 1 : g1.slug < g2.slug ? -1 : 0));
+    setGamesFilter(sortedGames);
+
+    //   let resultadoBusqueda = games.filter((game) => {
+    //     if (
+    //       game.name
+    //         .toString()
+    //         .toLowerCase()
+    //         .includes(terminoBusqueda.toLowerCase())
+    //     ) {
+    //       return game;
+    //     }
+    //   });
+    //   let sortedGames = resultadoBusqueda
+    //     .slice(0, 4)
+    //     .sort((g1, g2) => (g1.slug > g2.slug ? 1 : g1.slug < g2.slug ? -1 : 0));
+    //   setGamesFilter(sortedGames);
+    // }
   };
 
   console.log(gamesFilter);
@@ -76,22 +112,28 @@ export default function Layout({ children }) {
             onChange={(e) => handleChange(e)}
             value={busqueda}
           />
-          
-          {gamesFilter.length > 0 && gamesFilter.map((game) => (
-            <Link
-              href={`/games/${game.slug}`}
-              key={game.slug}
-              className=" md:w-1/2 md:ml-32 p-3 xs:m-0 xs:w-full bg-gray-700 text-white rounded-lg border border-cyan-800  shadow-md cursor-pointer hover:bg-gray-500 shadow-primary"
-              onClick={() => {
-                setGamesFilter([]);
-                setBusqueda("");
-              }}
-            >
-              <div className="flex gap-2 justify-start items-center">
-                <img src={game.background_image} className="w-10 h-10 object-cover rounded-lg" alt="" />
-                {game.name}</div>
-            </Link>
-          ))}
+
+          {gamesFilter.length > 0 &&
+            gamesFilter.map((game) => (
+              <Link
+                href={`/games/${game.slug}`}
+                key={game.slug}
+                className=" md:w-1/2 md:ml-32 p-3 xs:m-0 xs:w-full bg-gray-700 text-white rounded-lg border border-cyan-800  shadow-md cursor-pointer hover:bg-gray-500 shadow-primary"
+                onClick={() => {
+                  setGamesFilter([]);
+                  setBusqueda("");
+                }}
+              >
+                <div className="flex gap-2 justify-start items-center">
+                  <img
+                    src={game.background_image}
+                    className="w-10 h-10 object-cover rounded-lg"
+                    alt=""
+                  />
+                  {game.name}
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
       <div className="text-white md:ml-72 xs:ml-0 xs:w-auto xs:m-0 w-full p-4 m-2 flex flex-col bg-gray-900">
