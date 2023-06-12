@@ -40,7 +40,7 @@ export default function Layout({ children }) {
         return game;
       }
     });
-    setGamesFilter(resultadoBusqueda);
+    setGamesFilter(resultadoBusqueda.slice(0,4));
   };
 
   console.log(gamesFilter);
@@ -76,10 +76,11 @@ export default function Layout({ children }) {
             onChange={(e) => handleChange(e)}
             value={busqueda}
           />
-          {gamesFilter.length > 0 && (
+          
+          {gamesFilter.length > 0 && gamesFilter.map((game) => (
             <Link
-              href={`/games/${gamesFilter[0].slug}`}
-              key={gamesFilter[0].slug}
+              href={`/games/${game.slug}`}
+              key={game.slug}
               className=" md:w-1/2 md:ml-32 p-3 xs:m-0 xs:w-full bg-gray-700 text-white rounded-lg border border-cyan-800  shadow-md cursor-pointer hover:bg-gray-500 shadow-primary"
               onClick={() => {
                 setGamesFilter([]);
@@ -87,10 +88,10 @@ export default function Layout({ children }) {
               }}
             >
               <div className="flex gap-2 justify-start items-center">
-                <img src={gamesFilter[0].background_image} className="w-10 h-10 object-cover rounded-lg" alt="" />
-                {gamesFilter[0].name}</div>
+                <img src={game.background_image} className="w-10 h-10 object-cover rounded-lg" alt="" />
+                {game.name}</div>
             </Link>
-          )}
+          ))}
         </div>
       </div>
       <div className="text-white md:ml-72 xs:ml-0 xs:w-auto xs:m-0 w-full p-4 m-2 flex flex-col bg-gray-900">
