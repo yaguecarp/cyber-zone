@@ -14,8 +14,12 @@ module.exports = {
       },
       colors: {
         primary: '#00E6FF'
+      },
+      screens: {
+        'xs': '414px'
       }
     },
+
   },
   plugins: [],
 };

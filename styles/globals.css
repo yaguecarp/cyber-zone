@@ -13,7 +13,7 @@ ul > li:hover {
 }
 
 .card {
-  @apply border border-gray-700 cursor-pointer w-52 h-auto flex flex-col items-center justify-between shadow-cyan-300 shadow-md transition-all;
+  @apply border border-gray-700 cursor-pointer w-52 h-52 flex flex-col items-center justify-between shadow-cyan-300 shadow-md transition-all;
 }
 
 .card:hover {
