@@ -23,7 +23,7 @@ export default function GamePage({ data }) {
               <h2 className="border-b border-primary text-2xl">
                 Plataformas:{" "}
               </h2>
-              {data.parent_platforms.map((plataforma) => (
+              {data.parent_platforms?.map((plataforma) => (
                 <h3 className="text-white ml-2 text-xl" key={plataforma.platform.name}>
                   {plataforma.platform.name}
                 </h3>

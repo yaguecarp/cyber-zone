@@ -22,7 +22,7 @@ export default function Layout({ children }) {
   ]);
 
   const [message, setMessage] = useState("");
-  const client = new OpenAIClient({ apiKey: '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' });
+  const client = new OpenAIClient({ apiKey: process.env.OPENAI_API_KEY });
 
   async function completion(messages) {
     console.log("GPT: " + JSON.stringify(messages));
