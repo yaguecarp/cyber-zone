@@ -252,7 +252,7 @@ export const getServerSideProps = async (query) => {
       dataSteamsIDS: dataSteamsIDS.applist.apps.app,
       gameSteam,
       steamInfoArray: promisesArray,
-      gameInfo: gameInfo[0],
+      gameInfo: JSON.parse(JSON.stringify(gameInfo[0])),
     },
   };
 };
