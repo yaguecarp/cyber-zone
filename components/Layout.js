@@ -22,7 +22,6 @@ export default function Layout({ children }) {
 
   console.log("USER TYPE:", userType);
 
-
   useEffect(() => {
     fetch(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
       .then((res) => res.json())
@@ -32,7 +31,7 @@ export default function Layout({ children }) {
   }, []);
   // console.log(games);
 
-  console.log(games)
+  console.log(games);
 
   const handleChange = (e) => {
     setBusqueda(e.target.value);
@@ -89,7 +88,7 @@ export default function Layout({ children }) {
 
   const [message, setMessage] = useState("");
   const client = new OpenAIClient({
-     apiKey: "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",
+    apiKey: "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",
   });
 
   // clg
@@ -244,7 +243,6 @@ export default function Layout({ children }) {
           <div className="bg-black opacity-60 text-white z-50 w-full h-screen fixed flex flex-col justify-evenly items-center"></div>
           <div className="w-full h-screen flex justify-center items-center absolute ">
             <div className=" bg-gray-900 w-1/2 h-auto p-5 rounded-md z-50 flex flex-col gap-3 items-center justify-evenly fixed shadow-md shadow-primary">
-
               {/* TOOLTIP */}
               <div className="group">
                 <h1 className="text-white font-audiowide mt-3 text-4xl">
@@ -342,12 +340,9 @@ export default function Layout({ children }) {
         </div>
       </div>
       <div className="text-white md:ml-72 xs:ml-0 xs:w-auto xs:m-0 w-full p-4 m-2 flex flex-col bg-gray-900">
-        <div className="mt-24">
-          
-          {children}
-        </div>
+        <div className="mt-24">{children}</div>
       </div>
-      /* CHATBOT LAYOUT */
+      {/* CHATBOT LAYOUT */}
       <div className="fixed bottom-4 right-4 cursor-pointer flex items-end gap-3 z-30 ">
         <div
           className={
