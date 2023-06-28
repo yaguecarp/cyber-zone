@@ -88,7 +88,7 @@ export default function Layout({ children }) {
 
   const [message, setMessage] = useState("");
   const client = new OpenAIClient({
-    apiKey: "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",
+    apiKey: "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", //CAMBIADA
   });
 
   // clg
