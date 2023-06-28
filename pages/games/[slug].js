@@ -1,9 +1,28 @@
+import { UserContext } from "@/components/UserContext";
 import Link from "next/link";
-import { useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 
-export default function GamePage({ data }) {
+export default function GamePage({
+  data,
+  dataSteamsIDS,
+  gameSteam,
+  steamInfoArray,
+  gameInfo,
+}) {
   const [openModal, setOpenModal] = useState(false);
-  console.log(data);
+  const [steamsIDs, setSteamsIDs] = useState([]);
+  const [gameSteamInfo, setGameSteamInfo] = useState(
+    gameInfo[Object.keys(gameInfo)[0]]?.data || null
+  );
+  // console.log(data);
+  // console.log("STEAM ", steamInfoArray[0][Object.keys(steamInfoArray[0])[0]].success);
+  const { userType } = useContext(UserContext);
+  console.log(gameInfo[Object.keys(gameInfo)[0]].data);
+
+  let ARScurrency = new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+  });
 
   return (
     <>
@@ -24,7 +43,10 @@ export default function GamePage({ data }) {
                 Plataformas:{" "}
               </h2>
               {data.parent_platforms?.map((plataforma) => (
-                <h3 className="text-white ml-2 text-xl" key={plataforma.platform.name}>
+                <h3
+                  className="text-white ml-2 text-xl"
+                  key={plataforma.platform.name}
+                >
                   {plataforma.platform.name}
                 </h3>
               ))}
@@ -35,7 +57,7 @@ export default function GamePage({ data }) {
               </h2>
               {[...Array(5)].map((e, i) => (
                 <svg
-                key={i}
+                  key={i}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -55,7 +77,85 @@ export default function GamePage({ data }) {
             </div>
           </div>
         </div>
-        <div className="xs:mt-5">
+        <div className="xs:mt-5 flex flex-wrap">
+          <div className="flex p-2 items-baseline">
+            <h2 className="text-lg text-cyan-700">Descripcion:</h2>
+            <h3
+              className="ml-2 text-sm"
+              dangerouslySetInnerHTML={{
+                __html: gameSteamInfo?.short_description,
+              }}
+            ></h3>
+          </div>
+          <div className="flex p-2 items-baseline">
+            <h2 className="text-lg text-cyan-700">Genero:</h2>
+            <h3 className="ml-2 text-sm">
+              {data.genres?.map((genre) => `${genre.name}, `)}
+            </h3>
+          </div>
+          <div className="flex p-2 items-baseline">
+            <h2 className="text-lg text-cyan-700">Publicado en:</h2>
+            <h3 className="ml-2 text-sm">{data.released}</h3>
+          </div>
+          <div className="flex p-2 items-baseline">
+            <h2 className="text-lg text-cyan-700">Edad minima recomendada:</h2>
+            <h3 className="ml-2 text-sm">{gameSteamInfo?.required_age}</h3>
+          </div>
+
+          {userType === "GAMER" && (
+            <>
+              <div className="flex p-2 items-baseline">
+                <h2 className="text-lg text-cyan-700">Horas de juego:</h2>
+                <h3 className="ml-2 text-sm">{data.playtime}</h3>
+              </div>
+              <div className="flex p-2 items-baseline">
+                <h2 className="text-lg text-cyan-700">Cantidad de logros:</h2>
+                <h3 className="ml-2 text-sm">
+                  {gameSteamInfo?.achievements.total}
+                </h3>
+              </div>
+
+              <div className="flex p-2 items-baseline">
+                <h2 className="text-lg text-cyan-700">DLCs: </h2>
+                <h3 className="ml-2 text-sm">{gameSteamInfo?.dlc?.length}</h3>
+              </div>
+              <div className="flex p-2 items-baseline">
+                <h2 className="text-lg text-cyan-700">Free to play: </h2>
+                <h3 className="ml-2 text-sm">
+                  {gameSteamInfo?.is_free ? "SI" : "NO"}
+                </h3>
+              </div>
+
+              <div className="flex justify-center gap-10 w-full h-auto p-2 ">
+                <div className="w-1/2">
+                  <h2
+                    className="text-md text-cyan-700"
+                    dangerouslySetInnerHTML={{
+                      __html: gameSteamInfo?.pc_requirements.minimum,
+                    }}
+                  ></h2>
+                </div>
+                <div className="w-1/2">
+                  <h2
+                    className="text-md text-cyan-700"
+                    dangerouslySetInnerHTML={{
+                      __html: gameSteamInfo?.pc_requirements.recommended,
+                    }}
+                  ></h2>
+                </div>
+              </div>
+              <div className="flex p-2 items-baseline">
+                <h2 className="text-lg text-cyan-700">Idiomas soportados:</h2>
+                <h3
+                  className="ml-2 text-sm"
+                  dangerouslySetInnerHTML={{
+                    __html: gameSteamInfo?.supported_languages,
+                  }}
+                ></h3>
+              </div>
+            </>
+          )}
+
           <div className="flex p-2 items-baseline">
             <h2 className="text-lg text-cyan-700">Etiquetas:</h2>
             <h3 className="ml-2 text-sm">
@@ -67,10 +167,6 @@ export default function GamePage({ data }) {
             <h3 className="ml-2 text-sm">
               {data.publishers?.map((p) => `${p.name}`)}
             </h3>
-          </div>
-          <div className="flex p-2 items-baseline">
-            <h2 className="text-lg text-cyan-700">Publicado en:</h2>
-            <h3 className="ml-2 text-sm">{data.released}</h3>
           </div>
         </div>
         <div className="p-2 flex justify-between">
@@ -90,25 +186,20 @@ export default function GamePage({ data }) {
               ))}
             </div>
           </div>
-          {/* <div className="border w-1/2 h-auto p-5">
-            <div className="flex justify-between items-center">
-                <span className="text-gray-400">Precio base</span>
-                <span className="text-gray-400">$765,24</span>
-            </div>
-            <div className="flex justify-between items-center">
-                <span className="text-gray-400 text-sm mt-2">Percepcion de Ganancias y Bienes Personales <br /> RG AFIP N 5232/2022 </span>
-                <span className="text-gray-400">$344,25</span>
-            </div>
-            <div className="flex justify-between items-center">
-                <span className="text-gray-400 text-sm mt-2">Ley Impuesto Pais <br /> RG AFIP N 4659/2020</span>
-                <span className="text-gray-400">$229,50</span>
-            </div>
-            <hr className="mt-3 mb-3"/>
-            <div className="flex justify-between items-center">
-                <span className="text-gray-200">TOTAL APROXIMADO CON IMPUESTOS</span>
-                <span className="text-gray-200">$1.338,75</span>
-            </div>
-          </div> */}
+        </div>
+        <div className=" flex items-center justify-center">
+          <h2 className=" text-cyan-700 text-lg text-center border border-cyan-900 shadow-sm shadow-primary w-fit p-3">
+            Precio aproximado en Steam: <br />
+            <span className="text-white text-2xl ">
+              {gameSteamInfo?.is_free
+                ? "GRATIS"
+                : gameSteamInfo?.price_overview
+                ? ARScurrency.format(
+                    (gameSteamInfo?.price_overview?.final / 100) * 1.75
+                  )
+                : "No se pudo obtener informacion, lo lamentos."}
+            </span>
+          </h2>
         </div>
         <Link
           href="../precios-argentina"
@@ -130,10 +221,38 @@ export const getServerSideProps = async (query) => {
   const res = await fetch(
     `https://api.rawg.io/api/games/${query.params.slug}?key=${process.env.RAWG_API_KEY}`
   );
-
   const data = await res.json();
 
+  const resSteamIDS = await fetch(
+    `http://api.steampowered.com/ISteamApps/GetAppList/v0001/`
+  );
+  const dataSteamsIDS = await resSteamIDS.json();
+
+  const gameSteam = dataSteamsIDS.applist.apps.app.filter(
+    (game) => game.name === data.name
+  );
+
+  const promisesArray = await Promise.all(
+    gameSteam.map(async (item) => {
+      return (
+        await fetch(
+          `https://store.steampowered.com/api/appdetails?appids=${item.appid}&cc=ar&l=es`
+        )
+      ).json();
+    })
+  );
+
+  const gameInfo = promisesArray.filter(
+    (item) => item[Object.keys(item)[0]].success === true
+  );
+
   return {
-    props: { data },
+    props: {
+      data,
+      dataSteamsIDS: dataSteamsIDS.applist.apps.app,
+      gameSteam,
+      steamInfoArray: promisesArray,
+      gameInfo: gameInfo[0],
+    },
   };
 };

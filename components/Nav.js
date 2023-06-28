@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "./UserContext";
 
 export default function Nav({ show, setShow }) {
+  const { userType, setUserType } = useContext(UserContext);
+
   return (
     <>
       <aside
@@ -9,11 +12,14 @@ export default function Nav({ show, setShow }) {
           (show
             ? " xs:w-full xs:mt-10  md:mt-0 md:block md:w-auto md:bg-white"
             : " xs:hidden md:block ") +
-          "left-0 top-0 xs:z-30 md:z-50 text-gray-500 fixed w-auto p-5  bg-gray-900 h-full border-r border-primary"
+          "left-0 top-0 xs:z-30 md:z-40 text-gray-500 fixed w-auto p-5  bg-gray-900 h-full border-r border-primary"
         }
       >
         <Link href={"/"}>
-          <div onClick={()=>setShow(!show)} className="w-auto md:m-0 xs:mt-10 m-auto flex flex-col justify-center items-center ">
+          <div
+            onClick={() => setShow(!show)}
+            className="w-auto md:m-0 xs:mt-10 m-auto flex flex-col justify-center items-center "
+          >
             <img
               src="./logo_sin_fondo.png"
               alt="logo"
@@ -31,6 +37,22 @@ export default function Nav({ show, setShow }) {
             <li>NOSOTROS</li>
             <li>CONTACTO</li>
             <li>APOYANOS</li>
+            <label className="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                value={userType}
+                checked={userType === 'GAMER' ? true : false}
+                className="sr-only peer"
+                onChange={() =>
+                  setUserType(userType === "GAMER" ? "NO GAMER" : "GAMER")
+                }
+              />
+              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none  peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-cyan-600"></div>
+              <span className="ml-3 text-sm font-medium  text-white">
+                {userType}
+              </span>
+            </label>
+       
           </ul>
         </nav>
 
